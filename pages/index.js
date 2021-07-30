@@ -17,8 +17,21 @@ const DUMMY_MEETUPS = [
     }
 ];
 
-function HomePage() {
-    return <MeetupList meetups={DUMMY_MEETUPS} />
+function HomePage(props) {
+    return <MeetupList meetups={props.meetups} />
+}
+
+// This code is only ever executed during a build (never on server or client's computers).
+// This function is called first by Next.js rather than the default export, and it allows
+// Next.js to wait for dynamic content before it pre-renders this page component.
+export async function getStaticProps() {
+    // fetch data asynchronously here
+    return {
+        props: {
+            meetups: DUMMY_MEETUPS
+        },
+        revalidate: 10 // Number of seconds Next.js waits to regenerate this page on the server
+    };
 }
 
 export default HomePage;
