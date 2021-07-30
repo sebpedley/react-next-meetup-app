@@ -21,6 +21,20 @@ function HomePage(props) {
     return <MeetupList meetups={props.meetups} />
 }
 
+// This will always run on the server after deployment (not client's computer)
+// export async function getServerSideProps(context) {
+//     // Good to work with authentication here
+//     const req = context.req;
+//     const res = context.res;
+
+//     // fetch data asynchronously here
+//     return {
+//         props: {
+//             meetups: DUMMY_MEETUPS
+//         }
+//     };
+// }
+
 // This code is only ever executed during a build (never on server or client's computers).
 // This function is called first by Next.js rather than the default export, and it allows
 // Next.js to wait for dynamic content before it pre-renders this page component.
